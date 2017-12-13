@@ -39,6 +39,5 @@
         if (this.life <= 0) {
             gameState = GAMESTATE_LOST;
         }
-    };
-    
+    };    
 }

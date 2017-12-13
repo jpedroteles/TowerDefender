@@ -43,10 +43,13 @@
 
     this.hit = function (enemy) {
 
-       if ((this.x - this.startX < enemy.x + enemy.enemyWidth) && (this.x + this.startX > enemy.x)
+        if ((this.x - this.startX < enemy.x + enemy.enemyWidth) && (this.x + this.startX > enemy.x)
             && ((this.y - this.shotHeight) < (enemy.y + enemy.enemyHeight)) && (this.y > enemy.y)) {
             this.toDelete = true;
+            return true;
             // enemy should also be destroid
         }
+        else
+            return false;
     };
 }
