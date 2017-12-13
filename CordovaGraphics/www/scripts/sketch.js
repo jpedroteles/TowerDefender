@@ -46,7 +46,10 @@ function renderCanvas() {
         drawPlayer();
         for (var i = 0; i < enemies.length; i++) {
             enemies[i].drawEnemy();
+            enemies[i].moveEnemy();
+
         }
+       
     //}
    /* else if (gameState === GAMESTATE_LOST) {
         ctx.drawImage(background, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
