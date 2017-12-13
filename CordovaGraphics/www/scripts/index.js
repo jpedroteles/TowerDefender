@@ -15,7 +15,6 @@
         // TODO: o Cordova foi carregado. Execute qualquer inicialização que exija o Cordova aqui.
       
         onAllAssetsLoaded();
-
     };
 
     function onPause() {
