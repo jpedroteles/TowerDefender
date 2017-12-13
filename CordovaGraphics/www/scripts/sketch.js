@@ -47,7 +47,6 @@ function renderCanvas() {
         for (var i = 0; i < enemies.length; i++) {
             enemies[i].drawEnemy();
             enemies[i].moveEnemy();
-
         }
        
     //}
