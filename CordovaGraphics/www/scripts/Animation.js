@@ -89,7 +89,11 @@ function renderCanvas() {
         // render enemies
         for (var i = 0; i < enemies.length; i++) {
             enemies[i].drawEnemy();
-            enemies[i].moveEnemy();
+            enemies[i].moveEnemy(player);
+            if (enemies[i].toDelete) {		
+                enemies.splice(i, 1);		
+                i--;		
+            }
         }
 
         // render shots
