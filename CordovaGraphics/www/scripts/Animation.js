@@ -90,9 +90,9 @@ function renderCanvas() {
         for (var i = 0; i < enemies.length; i++) {
             enemies[i].drawEnemy();
             enemies[i].moveEnemy(player);
-            if (enemies[i].toDelete) {		
-                enemies.splice(i, 1);		
-                i--;		
+            if (enemies[i].toDelete) {
+                enemies.splice(i, 1);
+                i--;
             }
         }
 
@@ -104,7 +104,7 @@ function renderCanvas() {
             for (var j = 0; j < enemies.length; j++) {
                 if (shots[i].hit(enemies[j])) {
                     enemies.splice(j, 1);
-                    j--;		
+                    j--;
                 }
             }
 
