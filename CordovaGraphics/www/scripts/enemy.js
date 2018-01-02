@@ -4,34 +4,22 @@
     this.y = y;
     this.enemyWidth = 10;
     this.enemyHeight = 20;
-    this.hp = 10;
-    this.toDelete = false;
-    var enemySpeed = 1;
+    var enemySpeed = 0.1;
     var enemyNumber = 10;
 
     this.drawEnemy = function () {
+        // it is good coding practice to only include draw code inside draw functions
+        // and to not include drawing code anywhere else
+        // number in range of 1 to 100, where 100 is fastest
         var enemyColour = "purple";
         var enemyInterval = null;
+        //console.log(id, x, y);
         ctx.fillStyle = enemyColour;
         ctx.fillRect(this.x, this.y, this.enemyWidth, this.enemyHeight);
     };
 
-    this.moveEnemy = function (player) {
+    this.moveEnemy = function () {
         this.y += enemySpeed;
-        console.log("speed", enemySpeed);
-        console.log("enemy y", this.y, "player y", player.y);
-        if (this.y > canvas.height || this.y < 0) {
-            this.toDelete = true;
-        }
-       else if (this.y >= player.y) {
-            console.log("player hit");
-            this.toDelete = true;
-            console.log("boleano", this.toDelete);
-        }
-    };
-
-    this.destroy = function (attack) {
-        this.life -= attack;
-        this.toDelete = true;
+        //console.log("speed", enemySpeed);
     };
 }
