@@ -103,8 +103,8 @@ function renderCanvas() {
 
             for (var j = 0; j < enemies.length; j++) {
                 if (shots[i].hit(enemies[j])) {
-                   enemies.splice(j, 1);		
-                   j--;		
+                    enemies.splice(j, 1);
+                    j--;		
                 }
             }
 
