@@ -1,10 +1,10 @@
 ﻿var canvas;
 var ctx;
 
-var animationInterval = null; // set to null when not running
-var STEP_SIZE = 1;
-var NUMBER_OF_FRAMES_PER_SECOND = 25;
-var SPEED = 1000 / NUMBER_OF_FRAMES_PER_SECOND;
+//var animationInterval = null; // set to null when not running
+//var STEP_SIZE = 1;
+//var NUMBER_OF_FRAMES_PER_SECOND = 25;
+//var SPEED = 1000 / NUMBER_OF_FRAMES_PER_SECOND;
 
 var GAMESTATE_PLAYING = 0;
 var GAMESTATE_LOST = 1;
@@ -33,8 +33,8 @@ function onAllAssetsLoaded() {
     ctx = canvas.getContext("2d");
 
     // set the with and height of the canvas corresponding to the screen to be played
-    canvas.width = window.innerWidth - 2;
-    canvas.height = window.innerHeight - 7;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
     // SetUp Player
     player = new Player(100);
@@ -43,20 +43,26 @@ function onAllAssetsLoaded() {
     for (var i = 0; i < 10; i++) {
         enemies[i] = new Enemy(i, Math.floor((Math.random() * canvas.width) + 20), 20);
     }
-
+    
     window.addEventListener('keydown', keydownHandler);
-    renderCanvas();
 
+    // Accelerometer
+    var optionAccel = { frequency: 40 };  // Update every 3 seconds
+    var watchAcce = navigator.accelerometer.watchAcceleration(accelSuccess, accelError, optionAccel);
+
+    //Start Animations
     //startAnimationTimer();
+    startAnimationTimerShot();
+
+    renderCanvas();
 }
 
-
+/*
 function startAnimationTimer() {
     if (animationInterval === null) {
         animationInterval = setInterval(renderCanvas, SPEED);
     }
-}
-
+}*/
 
 function renderCanvas() {
     /* Continuously call requestAnimationFrame() to keep rendering the canvas */
@@ -74,20 +80,23 @@ function renderCanvas() {
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
     // render Player
-    player.drawPlayer();
+    player.drawPlayer();  
+
 
     // test to see if all of the frames have been played
     if (gameState === GAMESTATE_PLAYING) {
 
+        // render enemies
         for (var i = 0; i < enemies.length; i++) {
             enemies[i].drawEnemy();
             enemies[i].moveEnemy(player);
-            if (enemies[i].toDelete) {
-                enemies.splice(i, 1);
-                i--;
+            if (enemies[i].toDelete) {		
+                enemies.splice(i, 1);		
+                i--;		
             }
         }
 
+        // render shots
         for (i = 0; i < shots.length; i++) {
             shots[i].drawShot();
             shots[i].move();
@@ -95,8 +104,8 @@ function renderCanvas() {
             for (var j = 0; j < enemies.length; j++) {
                 if (shots[i].hit(enemies[j])) {
                     enemies.splice(j, 1);
-                    j--;
-                }                
+                    j--;		
+                }
             }
 
             if (shots[i].toDelete) {
@@ -118,6 +127,25 @@ function renderCanvas() {
         ctx.fillText("GAME OVER", 30, 250);
 
     }
+}
+
+// Get the Acceleration Success
+function accelSuccess(acceleration) {
+    player.rotation = 180 + acceleration.x * 9;
+
+/*
+    if (player.rotation >= 105) {
+        player.rotation = 105;
+    }
+
+    if (player.rotation <= 255) {
+        player.rotation = 255;
+    }*/
+}
+
+// Get the Acceleration Error
+function accelError() {
+    alert('onError!');
 }
 
 

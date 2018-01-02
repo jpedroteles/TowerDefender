@@ -1,4 +1,18 @@
-﻿function Shot(y, rot) {
+﻿var shotInterval = 1000; //1 second
+var shotAnimationInterval = null;
+
+function startAnimationTimerShot() {
+    if (shotAnimationInterval === null) {
+        shotAnimationInterval = setInterval(createShot, shotInterval);
+    }
+}
+
+function createShot() {
+    var shot = new Shot(player.playerY, player.rotation);
+    shots.push(shot);
+}
+
+function Shot(y, rot) {
     this.toDelete = false;
 
     this.shotWidth = canvas.width / 100;
@@ -43,13 +57,10 @@
 
     this.hit = function (enemy) {
 
-        if ((this.x - this.startX < enemy.x + enemy.enemyWidth) && (this.x + this.startX > enemy.x)
-            && ((this.y - this.shotHeight) < (enemy.y + enemy.enemyHeight)) && (this.y > enemy.y)) {
+       if ((this.x - this.startX < enemy.x + enemy.enemyWidth) && (this.x + this.startX > enemy.x)
+            && (this.y - this.shotHeight < enemy.y + enemy.enemyHeight) && (this.y > enemy.y)) {
             this.toDelete = true;
-            return true;
             // enemy should also be destroid
         }
-        else
-            return false;
     };
 }
