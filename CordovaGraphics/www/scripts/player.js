@@ -20,11 +20,9 @@
         var towerColour = "black";
         var playerColour = "red";
 
-        // tower
         ctx.fillStyle = towerColour;
         ctx.fillRect(0, this.y, this.towerWidth, this.towerHeight);
 
-        // player
         ctx.save();
 
         ctx.translate(this.playerX, this.playerY);
@@ -41,6 +39,5 @@
         if (this.life <= 0) {
             gameState = GAMESTATE_LOST;
         }
-    };
-    
+    };    
 }
