@@ -81,7 +81,11 @@ function renderCanvas() {
 
         for (var i = 0; i < enemies.length; i++) {
             enemies[i].drawEnemy();
-            enemies[i].moveEnemy();
+            enemies[i].moveEnemy(player);
+            if (enemies[i].toDelete) {
+                enemies.splice(i, 1);
+                i--;
+            }
         }
 
         for (i = 0; i < shots.length; i++) {
@@ -89,7 +93,10 @@ function renderCanvas() {
             shots[i].move();
 
             for (var j = 0; j < enemies.length; j++) {
-                shots[i].hit(enemies[j]);
+                if (shots[i].hit(enemies[j])) {
+                    enemies.splice(j, 1);
+                    j--;
+                }                
             }
 
             if (shots[i].toDelete) {
