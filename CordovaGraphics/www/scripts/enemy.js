@@ -23,7 +23,7 @@
         if (this.y > canvas.height || this.y < 0) {
             this.toDelete = true;
         }
-       else if (this.y >= player.y) {
+        else if (this.y >= player.y) {
             console.log("player hit");
             this.toDelete = true;
             console.log("boleano", this.toDelete);
