@@ -8,7 +8,7 @@
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
 
     function onDeviceReady() {
-        startServer()
+        //startServer()
 
         // Manipular eventos de pausa e retomada do Cordova
         document.addEventListener( 'pause', onPause.bind( this ), false );
