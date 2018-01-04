@@ -16,17 +16,21 @@
     </head>
     <body>
         
-            <canvas id="canvas" tabindex="1">
-                Your browser does not support the HTML5 'Canvas' tag.
-            </canvas>
+        <canvas id="canvas" tabindex="1">
+            Your browser does not support the HTML5 'Canvas' tag.
+        </canvas>
         
         
+        <script src="/socket.io/socket.io.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
+        <!--script type="text/javascript" src="http://cdn.socket.io/socket.io-1.0.3.js"></script-->
+        <script type="text/javascript" src="scripts/serverConnection.js"></script>
         <script type="text/javascript" src="scripts/platformOverrides.js"></script>
         <script type="text/javascript" src="scripts/index.js"></script>
         <script type="text/javascript" src="scripts/enemy.js"></script>
         <script type="text/javascript" src="scripts/player.js"></script>
         <script type="text/javascript" src="scripts/shot.js"></script>
+        <script type="text/javascript" src="scripts/serverConnection.js"></script>
         <script type="text/javascript" src="scripts/Animation.js"></script>
     </body>
 </html>
