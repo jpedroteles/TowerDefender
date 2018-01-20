@@ -22,5 +22,14 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "com.mediamatrixdoo.keepscreenon": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/zoxxx/PhoneGap-KeepScreenOn-plugin",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

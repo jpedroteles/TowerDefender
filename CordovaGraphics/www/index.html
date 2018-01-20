@@ -5,31 +5,193 @@
         Personalize a política de segurança de conteúdo na marca meta abaixo, conforme necessário. Adicione 'unsafe-inline' ao default-src para habilitar o JavaScript embutido.
  Para obter mais detalhes, consulte http://go.microsoft.com/fwlink/?LinkID=617521
     -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <!--meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *"-->
         
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
+        <script type="text/javascript" src="scripts/jquery.2.1.1.min.js"></script>
         <title>CordovaGraphics</title>
     </head>
     <body>
-        
+
+        <div class="wrapper">
+
+            <div class="sound sound-off"></div>
+            <div class="quitGame"></div>
+
+            <div id="menu">
+
+                <div id="main">
+                    <h1>Tower Defense</h1>
+                    <ul>
+                        <li><a href="javascript:void(0)" class="button play">Start Game</a></li>
+                        <li><a href="javascript:void(0)" class="button highscores">Highscores</a></li>
+                        <li><a href="javascript:void(0)" class="button settings">Settings</a></li>
+                        <li><a href="javascript:void(0)" class="button credits">Credits</a></li>
+                    </ul>
+                </div>
+
+                <div id="beforeGame">
+                    <a href="javascript:void(0)" class="button began">Began</a>
+                    <ul>
+                        <li class="developer"><b>Name: </b></li>
+                        <li class="textinput"><input type="text" name="enter" class="enter" value="Player Name" id="namePlayer" /></li>
+                    </ul>
+                    <a href="javascript:void(0)" class="button back">Back</a>
+                </div>
+
+                <div id="highscores">
+                    <table class="hstable">
+                        <thead>
+                            <tr>
+                                <th class="row-1 row-name">Name</th>
+                                <th class="row-2 row-score">Score</th>
+                                <th>
+                            </tr>
+                        </thead>
+                        <tbody class="tbodyhc">
+                        </tbody>
+                    </table>
+                    <a href="javascript:void(0)" class="button back">Back</a>
+                </div>
+
+                <div id="settings">
+
+                    <b>Enemy</b>
+                    <div class="imagesEnemy">
+                    </div>    
+                    <div>
+                        <button class="w3-button w3-black w3-display-left" onclick="enemyImgChange(-1, 1)">&#10094;</button>
+                        <b>Head</b>
+                        <button class="w3-button w3-black w3-display-right" onclick="enemyImgChange(1, 1)">&#10095;</button>
+                    </div>
+                    <div>
+                        <button class="w3-button w3-black w3-display-left" onclick="enemyImgChange(-1, 4)">&#10094;</button>
+                        <b>Shoulders</b>
+                        <button class="w3-button w3-black w3-display-right" onclick="enemyImgChange(1, 4)">&#10095;</button>
+                    </div>
+                    <div>
+                        <button class="w3-button w3-black w3-display-left" onclick="enemyImgChange(-1, 5)">&#10094;</button>
+                        <b>Torso</b>
+                        <button class="w3-button w3-black w3-display-right" onclick="enemyImgChange(1, 5)">&#10095;</button>
+                    </div>
+                    <div>
+                        <button class="w3-button w3-black w3-display-left" onclick="enemyImgChange(-1, 6)">&#10094;</button>
+                        <b>Legs</b>
+                        <button class="w3-button w3-black w3-display-right" onclick="enemyImgChange(1, 6)">&#10095;</button>
+                    </div>
+                    <div>
+                        <button class="w3-button w3-black w3-display-left" onclick="enemyImgChange(-1, 3)">&#10094;</button>
+                        <b>Belt</b>
+                        <button class="w3-button w3-black w3-display-right" onclick="enemyImgChange(1, 3)">&#10095;</button>
+                    </div>
+                    <div>
+                        <button class="w3-button w3-black w3-display-left" onclick="enemyImgChange(-1, 2)">&#10094;</button>
+                        <b>Hands</b>
+                        <button class="w3-button w3-black w3-display-right" onclick="enemyImgChange(1, 2)">&#10095;</button>
+                    </div>
+                    <div>
+                        <button class="w3-button w3-black w3-display-left" onclick="enemyImgChange(-1, 7)">&#10094;</button>
+                        <b>Feet</b>
+                        <button class="w3-button w3-black w3-display-right" onclick="enemyImgChange(1, 7)">&#10095;</button>
+                    </div>
+                    <div>
+                        <button class="w3-button w3-black w3-display-left" onclick="enemyImgChange(-1, 0)">&#10094;</button>
+                        <b>Weapons</b>
+                        <button class="w3-button w3-black w3-display-right" onclick="enemyImgChange(1, 0)">&#10095;</button>
+                    </div>
+
+                    <div>
+                        <img class="myPlayer" src="images/Player/player1.png">
+                        <img class="myPlayer" src="images/Player/player2.png">
+                        <img class="myPlayer" src="images/Player/player3.png">
+                        <img class="myPlayer" src="images/Player/player4.png">
+                        <img class="myPlayer" src="images/Player/player5.png">
+                        <img class="myPlayer" src="images/Player/player6.png">
+                    </div>
+                    <div>
+                        <button class="w3-button w3-black w3-display-left" onclick="playerImgChange(-1)">&#10094;</button>
+                        <b>Player</b>
+                        <button class="w3-button w3-black w3-display-right" onclick="playerImgChange(1)">&#10095;</button>
+                    </div>
+                    
+                    <div>
+                        <img class="myArcher" src="images/shots/Archer1.png">
+                        <img class="myArcher" src="images/shots/Archer2.png">
+                        <img class="myArcher" src="images/shots/Archer3.png">
+                        <img class="myArcher" src="images/shots/Archer4.png">
+                        <img class="myArcher" src="images/shots/Archer5.png">
+                        <img class="myArcher" src="images/shots/Archer6.png">
+                        <img class="myArcher" src="images/shots/Archer7.png">
+                        <img class="myArcher" src="images/shots/Archer8.png">
+                        <img class="myArcher" src="images/shots/Archer9.png">
+                    </div>
+                    <div>
+                        <button class="w3-button w3-black w3-display-left" onclick="archerImgChange(-1)">&#10094;</button>
+                        <b>Arrow</b>
+                        <button class="w3-button w3-black w3-display-right" onclick="archerImgChange(1)">&#10095;</button>
+                    </div>
+
+                    <div>
+                        <img class="myBackground" src="images/background/battleback0.png">
+                        <img class="myBackground" src="images/background/battleback1.png">
+                        <img class="myBackground" src="images/background/battleback2.png">
+                        <img class="myBackground" src="images/background/battleback3.png">
+                        <img class="myBackground" src="images/background/battleback4.png">
+                        <img class="myBackground" src="images/background/battleback5.png">
+                    </div>
+                    <div>
+                        <button class="w3-button w3-black w3-display-left" onclick="backgroundImgChange(-1)">&#10094;</button>
+                        <b>Background</b>
+                        <button class="w3-button w3-black w3-display-right" onclick="backgroundImgChange(1)">&#10095;</button>
+                    </div>
+                   
+                    <div class="ipList">
+                        <a href="javascript:void (0)" class="button ip">10.5.186.163</a>
+                        <a href="javascript:void (0)" class="button ip">212.191.70.213</a>
+                    </div>
+
+                    <input type="text" name="newip" class="newip" value="" id="newip" />
+                    <a href="javascript:void(0)" class="button addIP">Add Ip</a>
+                    <a href="javascript:void(0)" class="button removeIP">Remove Ip</a>
+                    <a href="javascript:void(0)" class="button back ip">Back</a>
+                </div>
+
+                <div id="credits">
+                    <ul>
+                        <li class="developer"><b>References: </b></li>
+                        <li class="artwork"><a href="https://opengameart.org/">Open Game Art</a></li>
+                    </ul>
+                    <ul>
+                        <li class="developer"><b>Developers: </b></li>
+                        <li class="artwork"><a> José Pedro Teles </a></li>
+                        <li class="artwork"><a> Marina Camilo </a></li>
+                    </ul>
+                    <a href="javascript:void(0)" class="button back">Back</a>
+                </div>
+
+            </div>
+        </div>
 
         <canvas id="canvas" tabindex="1">
             Your browser does not support the HTML5 'Canvas' tag.
         </canvas>
-        
-        <script src="/socket.io/socket.io.js"></script>
+
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="scripts/serverConnection.js"></script>
         <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+        <script type="text/javascript" src="scripts/sound.js"></script>
         <script type="text/javascript" src="scripts/index.js"></script>
         <script type="text/javascript" src="scripts/enemy.js"></script>
+        <script type="text/javascript" src="scripts/explosion.js"></script>
         <script type="text/javascript" src="scripts/player.js"></script>
         <script type="text/javascript" src="scripts/shot.js"></script>
-        <script type="text/javascript" src="scripts/serverConnection.js"></script>
+        <script type="text/javascript" src="scripts/background.js"></script>
         <script type="text/javascript" src="scripts/Animation.js"></script>
-    </body>
+        <script type="text/javascript" src="scripts/serverConnection.js"></script>
+        <script type="text/javascript" src="scripts/socket.io.js"></script>
+        <!--script src="https://code.jquery.com/jquery-3.2.1.min.js"></!--script-->
+</body>
 </html>
