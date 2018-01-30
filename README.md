@@ -7,3 +7,7 @@ This project is a Tower Defender Game for Mobile Devices (It was tested only on 
 *  [Whitelist](http://cordova.apache.org/docs/en/latest/reference/cordova-plugin-whitelist/index.html "information page")
 *  [KeepScreenOn](https://github.com/zoxxx/PhoneGap-KeepScreenOn-plugin "information page")
 
+### Tecnologies
+* Socket.io
+* Node.js
+* Cordowa
